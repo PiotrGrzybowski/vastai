@@ -4,9 +4,9 @@ umask 022
 
 export DEBIAN_FRONTEND=noninteractive
 
-if ! command -v zsh >/dev/null || ! command -v tmux >/dev/null || ! command -v rg >/dev/null || ! command -v fdfind >/dev/null; then
+if ! command -v zsh >/dev/null || ! command -v tmux >/dev/null || ! command -v gh >/dev/null || ! command -v rg >/dev/null || ! command -v fdfind >/dev/null; then
     apt-get update
-    apt-get install -y --no-install-recommends zsh tmux ripgrep fd-find
+    apt-get install -y --no-install-recommends zsh tmux gh ripgrep fd-find
     rm -rf /var/lib/apt/lists/*
 fi
 ln -sfn /usr/bin/fdfind /usr/local/bin/fd
@@ -30,6 +30,7 @@ npm_packages=()
 command -v prettier >/dev/null || npm_packages+=(prettier)
 command -v opencode >/dev/null || npm_packages+=(opencode-ai@latest)
 command -v tree-sitter >/dev/null || npm_packages+=(tree-sitter-cli)
+command -v codex >/dev/null || npm_packages+=(@openai/codex)
 ((${#npm_packages[@]} == 0)) || npm install -g "${npm_packages[@]}"
 
 if [[ ${PROVISIONING_SCRIPT:-} == http://* || ${PROVISIONING_SCRIPT:-} == https://* ]]; then

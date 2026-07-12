@@ -25,6 +25,7 @@ docker run --rm -i \
 [[ -f /root/.tmux.conf ]]
 [[ -d /root/.tmux/plugins/tpm/.git ]]
 [[ -d /root/.tmux/plugins/tmux-resurrect/.git ]]
+command -v gh >/dev/null
 nvim --headless --clean '+lua assert(vim.fn.has("nvim-0.12") == 1)' +qa
 
 HOME=/root tmux -L provision-test -f /root/.tmux.conf new-session -d
@@ -40,6 +41,7 @@ HOME=/root WORKSPACE=/workspace zsh -c '
     command -v prettier >/dev/null
     command -v opencode >/dev/null
     command -v tree-sitter >/dev/null
+    command -v codex >/dev/null
 '
 
 echo "provision smoke test passed"

@@ -54,6 +54,8 @@
 - [x] Add Zsh autosuggestions
 - [x] Add Zsh syntax highlighting as the last plugin
 - [x] Install tmux
+- [x] Install GitHub CLI
+- [x] Install Codex CLI
 - [x] Add `.tmux.conf` with OSC52 clipboard support
 - [x] Add TPM and tmux-resurrect
 - [ ] Add required CLI tools incrementally
