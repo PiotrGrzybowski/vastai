@@ -53,7 +53,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source "$ZSH/oh-my-zsh.sh"
 
-cd "${WORKSPACE:-/workspace}" 2>/dev/null || true
+[[ $PWD == "$HOME" ]] && cd "${WORKSPACE:-/workspace}" 2>/dev/null || true
 EOF
 
 for account in root user; do

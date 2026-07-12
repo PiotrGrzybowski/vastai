@@ -28,11 +28,14 @@ docker run --rm -i \
 command -v gh >/dev/null
 nvim --headless --clean '+lua assert(vim.fn.has("nvim-0.12") == 1)' +qa
 
-HOME=/root tmux -L provision-test -f /root/.tmux.conf new-session -d
+mkdir -p /workspace/project
+(cd /workspace/project && HOME=/root tmux -L provision-test -f /root/.tmux.conf new-session -d)
 [[ $(HOME=/root tmux -L provision-test show-option -gv prefix) == C-f ]]
+[[ $(HOME=/root tmux -L provision-test display-message -p '#{pane_current_path}') == /workspace/project ]]
 HOME=/root tmux -L provision-test kill-server
 
 HOME=/root WORKSPACE=/workspace zsh -c '
+    cd "$HOME"
     source ~/.zshrc
     [[ $PWD == /workspace ]]
     [[ -z ${CONDA_PREFIX:-} ]]
